@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  mircoservice:
+    image: book/mircoservice  
+    ports:
+      - "8080:8080"
+    links:
+      - rabbitmq
+  gamification:
+    image: book/gamification  
+    ports:
+      - "8081:8081"
+    links:
+      - mircoservice
+      - rabbitmq
+  rabbitmq:
+    image: bitnami/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_USERNAME=fg
+      - RABBITMQ_PASSWORD=fg
