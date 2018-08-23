@@ -1,6 +1,6 @@
 function updateLeaderBoard() {
     $.ajax({
-        url: "http://192.168.99.100:8081/leaders"
+        url: "http://192.168.99.100:8000/api/leaders"
     }).then(function (data) {
         $('#leaderboard-body').empty();
         data.forEach(function (row) {
@@ -12,7 +12,7 @@ function updateLeaderBoard() {
 }
 function updateStats(userId) {
     $.ajax({
-        url: "http://192.168.99.100:8081/stats?userId=" + userId,
+        url: "http://192.168.99.100:8000/api/stats?userId=" + userId,
         success: function (data) {
             $('#stats-div').show();
             $('#stats-user-id').empty().append(userId);

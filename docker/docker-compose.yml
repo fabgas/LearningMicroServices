@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  gateway:
+    image: book/gateway
+    ports:
+      - "8000:8000"
+    links:
+      - mircoservice
+      - gamification
   mircoservice:
     image: book/mircoservice  
     ports:
@@ -12,7 +19,6 @@ services:
     ports:
       - "8081:8081"
     links:
-      - mircoservice
       - rabbitmq
   rabbitmq:
     image: bitnami/rabbitmq

@@ -1,6 +1,6 @@
 function updateMultiplication() {
     $.ajax({
-        url: "http:///192.168.99.100:8080/multiplications/random"
+        url: "http:///192.168.99.100:8000/api/multiplications/random"
     }).then(function (data) {
         // Cleans the form
         $("#attempt-form").find("input[name='result-attempt']")
@@ -17,7 +17,7 @@ function updateResults(alias) {
     var userId = -1;
     $.ajax({
         async: false,
-        url: "http://192.168.99.100:8080/results?alias=" + alias,
+        url: "http://192.168.99.100:8000/api/results?alias=" + alias,
         success: function (data) {
             $('#results-div').show();
             $('#results-body').empty();
@@ -54,7 +54,7 @@ $(document).ready(function () {
         };
         // Send the data using post
         $.ajax({
-            url: 'http://192.168.99.100:8080/results',
+            url: 'http://192.168.99.100:8000/api/results',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
