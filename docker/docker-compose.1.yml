@@ -1,17 +1,20 @@
 version: "3"
 
 services:
-  
-  serviceregistry:
-    image: book/service-registry
-    ports:
-      - "8761:8761"
   gateway:
     image: book/gateway
     ports:
       - "8000:8000"
     links:
+      - mircoservice
+      - gamification
       - serviceregistry
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://serviceregistry:8761/eureka
+  serviceregistry:
+    image: book/service-registry
+    ports:
+      - "8761:8761"
   mircoservice:
     image: book/mircoservice  
     ports:

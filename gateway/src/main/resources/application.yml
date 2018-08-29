@@ -1,23 +1,29 @@
 server:
   port: 8000
 zuul:
+  ignoredServices: '*'
   prefix: /api
   routes:
     multiplications:
       path: /multiplications/**
-      url: http://mircoservice:8080/multiplications
+      serviceId: multiplication
+      strip-prefix: false
     results:
       path: /results/**
-      url: http://mircoservice:8080/results
+      serviceId: multiplication
+      strip-prefix: false
     leaders:
       path: /leaders/**
-      url: http://gamification:8081/leaders
+      serviceId: gamification
+      strip-prefix: false
     stats:
       path: /stats/**
-      url: http://gamification:8081/stats
+      serviceId: gamification
+      strip-prefix: false
   endpoints:
-    trace:
+    routes:
       sensitive: false
-  ribbon:
-    eureka:
-      enabled: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://serviceregistry:8761/eureka/
