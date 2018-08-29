@@ -12,6 +12,8 @@ services:
       - "8000:8000"
     links:
       - serviceregistry
+      - gamification
+      - mircoservice
   mircoservice:
     image: book/mircoservice  
     ports:

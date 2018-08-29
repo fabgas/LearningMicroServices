@@ -20,9 +20,9 @@ zuul:
       path: /stats/**
       serviceId: gamification
       strip-prefix: false
-  endpoints:
-    routes:
-      sensitive: false
+endpoints:
+  routes:
+    sensitive: false
 eureka:
   client:
     serviceUrl:
